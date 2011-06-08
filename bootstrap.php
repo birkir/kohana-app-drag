@@ -81,6 +81,7 @@ if (isset($_SERVER['KOHANA_ENV']))
  */
 Kohana::init(array(
 	'base_url'   => '/',
+	'index_file' => ''
 ));
 
 /**
@@ -97,14 +98,15 @@ Kohana::$config->attach(new Config_File);
  * Enable modules. Modules are referenced by a relative or absolute path.
  */
 Kohana::modules(array(
-	// 'auth'       => MODPATH.'auth',       // Basic authentication
-	// 'cache'      => MODPATH.'cache',      // Caching with multiple backends
-	// 'codebench'  => MODPATH.'codebench',  // Benchmarking tool
-	// 'database'   => MODPATH.'database',   // Database access
-	// 'image'      => MODPATH.'image',      // Image manipulation
-	// 'orm'        => MODPATH.'orm',        // Object Relationship Mapping
-	// 'unittest'   => MODPATH.'unittest',   // Unit testing
-	// 'userguide'  => MODPATH.'userguide',  // User guide and API documentation
+	'auth'       => MODPATH.'auth',       // Basic authentication
+	'cache'      => MODPATH.'cache',      // Caching with multiple backends
+	'codebench'  => MODPATH.'codebench',  // Benchmarking tool
+	'database'   => MODPATH.'database',   // Database access
+	'image'      => MODPATH.'image',      // Image manipulation
+	'orm'        => MODPATH.'orm',        // Object Relationship Mapping
+	'userguide'  => MODPATH.'userguide',  // User Guide
+	'media'      => MODPATH.'media',      // Media module
+	'recaptcha'  => MODPATH.'recaptcha',  // Recaptcha
 	));
 
 /**
@@ -113,6 +115,6 @@ Kohana::modules(array(
  */
 Route::set('default', '(<controller>(/<action>(/<id>)))')
 	->defaults(array(
-		'controller' => 'welcome',
+		'controller' => 'home',
 		'action'     => 'index',
 	));
