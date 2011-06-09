@@ -525,7 +525,7 @@ input.ui-button::-moz-focus-inner {
 		height: 31px !important;
 	}
 }
-
+a.ui-button:hover { color: #000; }
 
 /*button icon element(s) */
 .ui-button-icon-only .ui-icon, .ui-button-text-icon-primary .ui-icon, .ui-button-text-icon-secondary .ui-icon, .ui-button-text-icons .ui-icon, .ui-button-icons-only .ui-icon { position: absolute; top: 50%; margin-top: -8px; }
@@ -750,7 +750,7 @@ textarea:hover, input:not([type="submit"]):not([type="button"]):not([type="check
 }
 textarea:focus, input:not([type="submit"]):not([type="button"]):not([type="checkbox"]):not([type="radio"]):not([type="file"]):focus {
 	border: 1px solid #95bdd4;
-	-webkit-box-shadow: 0 2px 3px rgba(161,202,226,0.5) inset, 0 1px 0 rgba(255,255,255,0.2);
-	-moz-box-shadow: 0 2px 3px rgba(161,202,226,0.5) inset, 0 1px 0 rgba(255,255,255,0.2);
-	box-shadow: 0 2px 3px rgba(161,202,226,0.5) inset, 0 1px 0 rgba(255,255,255,0.2);
+	-webkit-box-shadow: 0 2px 3px rgba(161,202,175,0.5) inset, 0 1px 0 rgba(255,255,255,0.2);
+	-moz-box-shadow: 0 2px 3px rgba(161,202,175,0.5) inset, 0 1px 0 rgba(255,255,255,0.2);
+	box-shadow: 0 2px 3px rgba(161,202,175,0.5) inset, 0 1px 0 rgba(255,255,255,0.2);
 }

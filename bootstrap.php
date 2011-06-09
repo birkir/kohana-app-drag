@@ -107,6 +107,7 @@ Kohana::modules(array(
 	'userguide'  => MODPATH.'userguide',  // User Guide
 	'media'      => MODPATH.'media',      // Media module
 	'recaptcha'  => MODPATH.'recaptcha',  // Recaptcha
+	'kohana-admin' => MODPATH.'kohana-admin' // Kohana admin
 	));
 
 /**

@@ -49,6 +49,9 @@ class Controller_User extends Controller_Template {
 
 				// Add login role to user
 				$user->add('roles', ORM::factory('role')->where('name', '=', 'login')->find());
+
+				// Redirect to user profile
+				Request::currenct()->redirect('user/profile');
 			}
 			catch (ORM_Validation_Exception $e)
 			{
@@ -122,6 +125,8 @@ class Controller_User extends Controller_Template {
 			// Redirect to user profile
 			Request::current()->redirect('user/profile');
 		}
+		
+		$this->template->view = View::factory('user/lostpassword');
 	}
 
 	/**

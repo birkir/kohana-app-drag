@@ -45,7 +45,9 @@ class Controller_Template extends Kohana_Controller_Template {
 			$this->template->title   = '';
 			$this->template->view = '';
 			$this->template->styles = array();
-			$this->template->scripts = array();    
+			$this->template->scripts = array();
+			View::set_global('action', $this->action);
+			View::set_global('controller', Request::current()->controller());
 		}
 	}
 
@@ -77,3 +79,13 @@ class Controller_Template extends Kohana_Controller_Template {
 	}
 
 } // End Template
+
+function p($str = NULL)
+{
+	if (isset($_POST[$str]))
+	{
+		return $_POST[$str];
+	}
+
+	return NULL;
+}

@@ -1,0 +1,50 @@
+@import "style.reset.css";
+
+/** quick variables **/
+.floatl { float: left; }
+.floatr { float: right; }
+.xfloat { float: none; }
+.wrap { margin: 0 auto; width: 990px; }
+
+/** base styles **/
+h1, h2, h3 { color: #444444; }
+:link, a:visited, a:hover, a:active { color: #3333ff; }
+hr { background: #f0f0ee; }
+p { font-size: 14px; line-height: 20px; }
+body { color: #222222; background: #e5e5e5; font-family: "Bitstream Vera Sans", verdana, sans-serif; font-size: 10px; }
+
+/** messages **/
+.message { text-align: center; -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px; margin: 0 0 1em 0; }
+.message.error { border: 1px solid #ffbbbb; background: #ffdddd; }
+.message.warning { border: 1px solid #fffaaa; background: #ffffcc; }
+.message.warning { border: 1px solid #ddddff; background: #eeeeff; }
+
+/** fieldsets **/
+fieldset { background: #ffffff; margin: 1em 0 0 0; padding: 2em; padding-top: 1em; }
+fieldset legend { background: #48625B; color: #ffffff; padding: 0.5em 2.4em 0.5em 0.7em;  margin-left: -1.55em; width: 100%; font-size: 1.3em; }
+fieldset dl {}
+fieldset dt { margin: 0 0 0.25em 0; }
+fieldset dt label { color: #666666; font-size: 1.3em; }
+fieldset dd { margin: 0 0 0.5em 0; }
+fieldset dd input,
+fieldset dd textarea { width: 320px; font-size: 1.2em; }
+
+/** header **/
+#header { background: #48625B; }
+
+/** header > logo **/
+#header h1 { font-size: 2.8em; padding: 0.5em 0; margin: 0; font-weight: normal; }
+#header h1 a { color: #ffffff; }
+
+/** header > menu **/
+#header #menu { }
+#header #menu ul { margin: 0; list-style: none;}
+#header #menu ul li { float: left; display: block; }
+#header #menu ul li a { display: block; background: #30423e; margin: 0 0 0 0.5em; color: #ffffff; text-decoration: none; padding: 0.4em 1.0em; line-height: 1.4em; font-size: 1.4em; }
+#header #menu ul li:hover a { background: #23302d; }
+#header #menu ul li.current a { background: #e5e5e5; color: #444444; }
+#header #menu ul li:first-child a { margin-left: 0; }
+
+/** footer **/
+#footer { background: #ffffff; margin: 1em 0 0 0; padding: 1em 0; }
+#footer p { font-size: 1.3em; }

@@ -3,36 +3,44 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 	<head>
 		<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
-		<title>drag.forritun.org</title>
+		<title><?php echo empty($title) ? NULL : $title.' | '; ?>drag.forritun.org</title>
 <?php foreach ($styles as $style => $type): ?>
-		<link rel="stylesheet" href="/media/<?php echo $style; ?>" type="<?php echo $type; ?>" />
+		<link rel="stylesheet" href="/media/<?php echo $style; ?>" media="<?php echo $type; ?>" type="text/css" />
 <?php endforeach; ?>
 <?php foreach ($scripts as $script): ?>
 		<script type="text/javascript" src="/media/<?php echo $script; ?>"></script>
 <?php endforeach; ?>
 	</head>
 	<body>
-		<div class="wrap">
-			<div id="header">
-				<h1><?php echo isset($title) ? $title.' | ' : NULL; ?>drag.forritun.org</h1>
+		<div id="header">
+			<div class="wrap">
+				<h1><a href="">drag.forritun.org</a></h1>
 				<div id="menu">
 					<ul>
-						<li><a href="/home"><?php echo __('Home'); ?></a></li>
+						<li<?php if ($controller == 'home'): ?> class="current"<?php endif; ?>><a href="/home"><?php echo __('Home'); ?></a></li>
+						<li<?php if ($controller == 'car'): ?> class="current"<?php endif; ?>><a href="/car"><?php echo __('Cars'); ?></a></li>
+						<li<?php if ($controller == 'time'): ?> class="current"<?php endif; ?>><a href="/time"><?php echo __('Times'); ?></a></li>
 <?php if (Auth::instance()->logged_in('login')): ?>
-						<li><a href="/user/profile"><?php echo __('Profile'); ?></a></li>
-						<li><a href="/user/logout"><?php echo __('Logout'); ?></a></li>
+						<li<?php if ($controller == 'user' AND $action == 'profile'): ?> class="current"<?php endif; ?>><a href="/user/profile"><?php echo __('Profile'); ?></a></li>
+						<li<?php if ($controller == 'user' AND $action == 'logout'): ?> class="current"<?php endif; ?>><a href="/user/logout"><?php echo __('Logout'); ?></a></li>
 <?php else: ?>
-						<li><a href="/user/register"><?php echo __('Register'); ?></a></li>
-						<li><a href="/user/login"><?php echo __('Login'); ?></a></li>
+						<li<?php if ($controller == 'user' AND $action == 'register'): ?> class="current"<?php endif; ?>><a href="/user/register"><?php echo __('Register'); ?></a></li>
+						<li<?php if ($controller == 'user' AND $action == 'login'): ?> class="current"<?php endif; ?>><a href="/user/login"><?php echo __('Login'); ?></a></li>
+						<li<?php if ($controller == 'user' AND $action == 'lostpassword'): ?> class="current"<?php endif; ?>><a href="/user/lostpassword"><?php echo __('Lost password'); ?></a></li>
 <?php endif; ?>
 					</ul>
+					<div class="clearfix"></div>
 				</div>
 			</div>
-			<div id="body">
+		</div>
+		<div id="body">
+			<div class="wrap">
 <?php echo isset($view) ? $view : NULL; ?>
 			</div>
-			<div id="footer">
-				
+		</div>
+		<div id="footer">
+			<div class="wrap">
+				<p>&copy; 2011</p>
 			</div>
 		</div>
 	</body>

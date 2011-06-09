@@ -1,6 +1,7 @@
 <form action="" method="post">
-	<fieldset>
+	<fieldset style="width: 328px;margin: 5em auto;">
 		<legend><?php echo __('Login'); ?></legend>
+<?php echo View::factory('misc/fieldset/errors')->set('errors', isset($errors) ? $errors : array()); ?>
 		<dl>
 			<dt><label for="f_username"><?php echo __('Username'); ?></label></dt>
 			<dd><input type="text" name="username" id="f_username" /></dd>
@@ -9,7 +10,6 @@
 			<dd><input type="password" name="password" id="f_password" /></dd>
 		</dl>
 		<input type="submit" value="<?php echo __('Login'); ?>" />
-		<a class="button" href="/user/lostpassword"><?php echo __('Lost password'); ?></a>
+		<input type="button" onclick="window.location='/user/lostpassword'" value="<?php echo __('Lost password'); ?>" />
 	</fieldset>
 </form>
-<?php echo isset($errors) ? Debug::vars($errors) : NULL; ?>
