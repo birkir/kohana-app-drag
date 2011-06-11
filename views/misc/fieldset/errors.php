@@ -1,5 +1,3 @@
-<?php if (isset($errors)): ?>
-		<div class="errors">
 <?php foreach ($errors as $error): ?>
 			<div class="message error">
 				<p>
@@ -7,5 +5,3 @@
 				</p>
 			</div>
 <?php endforeach; ?>
-		</div>
-<?php endif; ?>
