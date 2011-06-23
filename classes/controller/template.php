@@ -8,6 +8,8 @@ class Controller_Template extends Kohana_Controller_Template {
 
 	public $secure_actions = NULL;
 
+	public $block_clearfix = FALSE;
+
 	/**
 	 * Prepare the template for other classes
 	 *
@@ -48,6 +50,26 @@ class Controller_Template extends Kohana_Controller_Template {
 			$this->template->scripts = array();
 			View::set_global('action', $this->action);
 			View::set_global('controller', Request::current()->controller());
+			View::set_global('id', Request::current()->param('id'));
+		}
+	}
+
+	public function block($title = NULL, $view = NULL, $class = NULL)
+	{
+		if ($this->block_clearfix AND $class == NULL)
+		{
+			$this->template->view .= '<div class="clearfix"></div>'."\n";
+			$this->block_clearfix = FALSE;
+		}
+
+		$this->template->view .= View::factory('misc/block')
+		->set('title', $title)
+		->set('view', $view)
+		->set('class', $class);
+
+		if ($class !== NULL)
+		{
+			$this->block_clearfix = TRUE;
 		}
 	}
 
@@ -60,6 +82,11 @@ class Controller_Template extends Kohana_Controller_Template {
 	{
 		if ($this->auto_render)
 		{
+			if ($this->block_clearfix)
+			{
+				$this->template->view .= '<div class="clearfix"></div>'."\n";
+			}
+
 			$styles = array(
 				'css/style.screen.css' => 'screen',
 				'css/jquery-ui-1.8.7.css' => 'screen'

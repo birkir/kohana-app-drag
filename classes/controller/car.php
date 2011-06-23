@@ -3,32 +3,33 @@
 class Controller_Car extends Controller_Template {
 
 	public $secure_actions = array(
+		'edit' => array('login'),
 		'add' => array('login'),
 		'garage' => array('login')
 	);
 
 	public function action_index()
 	{
-		$this->template->view = View::factory('car/list');
-		
-		$cars = ORM::factory('car')->find_all();
-		
-		$this->template->view->cars = $cars;
+		$view = View::factory('car/list');
+
+		$view->cars = ORM::factory('car')->find_all();
+
+		$this->block('Cars', $view);
 	}
 	
 	public function action_add()
 	{
-		$this->template->view = View::factory('car/fieldset');
+		$this->block('Add car', View::factory('car/fieldset'));
 	}
 
 	public function action_edit($id = 0)
 	{
-		$this->template->view = View::factory('car/fieldset');
-		$this->template->view->car = ORM::factory('car', $id);
+		$view = View::factory('car/fieldset');
+		$view->car = ORM::factory('car', $id);
 
-		if ($this->template->view->car->user->id != Auth::instance()->get_user()->id)
+		if ($view->car->user->id != Auth::instance()->get_user()->id)
 		{
-			$this->template->view->errors = array(
+			$view->errors = array(
 				'No write access!'
 			);
 		}
@@ -38,15 +39,17 @@ class Controller_Car extends Controller_Template {
 			{
 				try
 				{
-					$this->template->view->car->values($_POST)->check()->save();
-					$this->template->view->message = __('Updated values');
+					$view->car->values($_POST)->check()->save();
+					$view->message = 'Updated values';
 				}
 				catch(Kohana_Validate_Exception $e)
 				{
-					$this->template->view->errors = $e->errors();
+					$view->errors = $e->errors();
 				}
 			}
 		}
+
+		$this->block('Edit car', $view);
 	}
 
 	public function action_garage()

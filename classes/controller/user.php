@@ -22,18 +22,18 @@ class Controller_User extends Controller_Template {
 		}
 
 		// Set register view
-		$this->template->view = View::factory('user/register');
+		$view = View::factory('user/register');
 
 		// Captcha
 		$captcha = new Recaptcha;
-		$this->template->view->captcha = $captcha->get_html();
+		$view->captcha = $captcha->get_html();
 
 		// Check for post data
 		if ($_POST)
 		{
 			if ( ! $captcha->check())
 			{
-				$this->template->view->errors = array('captcha' => 'Captcha code incorrect. Please try again.');
+				$view->errors = array('captcha' => 'Captcha code incorrect. Please try again.');
 
 				return FALSE;
 			}
@@ -56,9 +56,11 @@ class Controller_User extends Controller_Template {
 			catch (ORM_Validation_Exception $e)
 			{
 				// Attach creation errors to view
-				$this->template->view->errors = $e->errors('register');
+				$view->errors = $e->errors('register');
 			}
 		}
+
+		$this->block('Register', $view);
 	}
 
 	/**
@@ -76,7 +78,7 @@ class Controller_User extends Controller_Template {
 		}
 
 		// Set login view
-		$this->template->view = View::factory('user/login');
+		$view = View::factory('user/login');
 
 		// Check for post data
 		if ($_POST)
@@ -89,9 +91,11 @@ class Controller_User extends Controller_Template {
 			}
 			else
 			{
-				$this->template->view->errors = array('Incorrect login credentials');
+				$view->errors = array('Incorrect login credentials');
 			}
 		}
+
+		$this->block('Login', $view);
 	}
 
 	/**
@@ -126,7 +130,7 @@ class Controller_User extends Controller_Template {
 			Request::current()->redirect('user/profile');
 		}
 		
-		$this->template->view = View::factory('user/lostpassword');
+		$this->block('Lost password', View::factory('user/lostpassword'));
 	}
 
 	/**
@@ -136,7 +140,9 @@ class Controller_User extends Controller_Template {
 	 */
 	public function action_profile()
 	{
-		$this->template->view = "User PROFILE";
+		$this->block('Facebook', 'TEST 123', 'floatl');
+		$this->block('Profile', 'Foo', 'floatr');
+		$this->block('FOOBAR', 'FOO BAR BAZ');
 	}
 
 } // End User

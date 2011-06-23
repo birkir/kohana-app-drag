@@ -16,7 +16,7 @@ body { background: #fefefe url(../img/default/background.png); font-size: 10px; 
 h1 { font-size: 27px; }
 
 /** header **/
-#header { height: 40px; width: 100%; background: #333; position: absolute; top: 0; left: 0; z-index: 3; }
+#header { height: 40px; width: 100%; background: #333 url(../img/default/header.png) repeat-x; position: absolute; top: 0; left: 0; z-index: 3; color: #fff; }
 
 /** sidebar **/
 #sidebar { height: 100%; width: 240px; position: absolute; top: 0; left: 0; z-index: 2; padding: 40px 0 0 0; }
@@ -31,6 +31,8 @@ h1 { font-size: 27px; }
 #sidebar ul li.current ul li a { height: 28px; line-height: 28px; text-indent: 52px; text-decoration: none; font-weight: normal; font-size: 1.2em; border: none; color: #7C7D7E; background: url(../img/default/submenu.png) 37px 11px no-repeat; }
 #sidebar ul li.current ul li.current a,
 #sidebar ul li.current ul li a:hover { background-color: transparent; border: none; color: #000; background-position: 37px -30px; }
+#sidebar ul li.current ul li ul { border: none; margin: 0; padding: 0; }
+#sidebar ul li.current ul li ul li a { margin-left: 12px; }
 
 /** main **/
 #main { margin: 30px 40px; }
@@ -46,8 +48,10 @@ h1 { font-size: 27px; }
 /** table **/
 table.ui-table { width: 100%; text-align: left; }
 table.ui-table thead tr td { font-weight: bold; color: #151515; font-size: 1.3em; padding-bottom: 2px; border-bottom: 1px solid #BDBDBD; }
-table.ui-table tbody tr td { height: 30px; vertical-align: middle; border-bottom: 1px solid #dadada; border-top: 1px solid #ffffff; font-size: 1.3em; }
-table.ui-table tbody tr:nth-child(2n+1) td { background-color: #F0F0F0; }
+table.ui-table tbody tr td { height: 30px; vertical-align: middle; border-bottom: 1px solid #dadada; border-top: 1px solid #ffffff; font-size: 1.3em; padding: 0 4px; }
+table.ui-table tbody tr th { height: 30px; vertical-align: middle; border-bottom: 1px solid #dadada; border-top: 1px solid #ffffff; font-size: 1.3em; font-weight: bold; padding: 0 4px; }
+table.ui-table tbody tr:nth-child(2n+1) td,
+table.ui-table tbody tr:nth-child(2n+1) th { background-color: #F0F0F0; }
 table.ui-table tr td input[type='checkbox'] { margin: 3px; }
 
 /** fieldset **/
