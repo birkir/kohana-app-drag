@@ -10,6 +10,41 @@ class Controller_Import extends Controller_Template {
 	{
 	}
 
+	public function action_fix_round($id = 0)
+	{
+		$matches = ORM::factory('competition_round_match')
+		->where('competition_round_id', '=', $id)
+		->find_all();
+
+		foreach ($matches as $match)
+		{
+			$car_a = $match->carnumber_a;
+			$car_b = $match->carnumber_b;
+
+			$comp_a = ORM::factory('competition_round_competitor')
+			->where('competition_round_id', '=', $id)
+			->where('identity', '=', $car_a)
+			->find();
+
+			$comp_b = ORM::factory('competition_round_competitor')
+			->where('competition_round_id', '=', $id)
+			->where('identity', '=', $car_b)
+			->find();
+
+			if ($comp_a->loaded()) {
+				$m_a = ORM::factory('competition_round_match', $match->id);
+				$m_a->competitor_a = $comp_a->id;
+				$m_a->save();
+			}
+
+			if ($comp_b->loaded()) {
+				$m_b = ORM::factory('competition_round_match', $match->id);
+				$m_b->competitor_a = $comp_b->id;
+				$m_b->save();
+			}
+		}
+	}
+
 	public function action_times()
 	{
 		$view = Form::open('/import/times', array('enctype' => 'multipart/form-data'));
@@ -28,6 +63,10 @@ class Controller_Import extends Controller_Template {
 				if ($i == 0)
 				{
 					$cols = str_getcsv($row, ";");
+					foreach ($cols as $x => $col)
+					{
+						$cols[$x] = UTF8::trim($col);
+					}
 					continue;
 				}
 
@@ -37,7 +76,7 @@ class Controller_Import extends Controller_Template {
 					'car_id' => NULL,
 					'track_id' => 1,
 					'lane' => NULL,
-					'won' => intval($columns['Win']),
+					'won' => intval(isset($columns['Win']) ? $columns['Win'] : 0),
 					'rt' => (double) self::parse_time($columns['RT'], 3),
 					'60ft' => (double) self::parse_time($columns['60Foot'], 3),
 					'660ft' => (double) self::parse_time($columns['660Foot'], 3),
@@ -56,16 +95,17 @@ class Controller_Import extends Controller_Template {
 
 				if ($i == 1){ $last = $columns; continue; }
 
-				if ($last['Time'] == $columns['Time'])
+				if ($i % 2 == 1)
 				{
 					$competition_round_match = array(
+						'competition_round_id' => 5,
 						'time_a' => $last['TimeID'],
 						'time_b' => $time_id,
-						'competitor_a' => DB::select('id')->from('competition_round_competitors')->where('identity', '=', $last['CarNumber'])->where('competition_round_id', '=', 1),
-						'competitor_b' => DB::select('id')->from('competition_round_competitors')->where('identity', '=', $columns['CarNumber'])->where('competition_round_id', '=', 1),
-						'carnumber_a' => $last['CarNumber'],
-						'carnumber_b' => $columns['CarNumber'],
-						'won' => ($last['Win'] == 1 ? 'a' : 'b')
+						'competitor_a' => DB::select('id')->from('competition_round_competitors')->where('identity', '=', UTF8::trim($last['CarNumber']))->where('competition_round_id', '=', 5),
+						'competitor_b' => DB::select('id')->from('competition_round_competitors')->where('identity', '=', UTF8::trim($columns['CarNumber']))->where('competition_round_id', '=', 5),
+						'carnumber_a' => UTF8::trim($last['CarNumber']),
+						'carnumber_b' => UTF8::trim($columns['CarNumber']),
+						'won' => (isset($last['Win']) ? ($last['Win'] == 1 ? 'a' : 'b') : NULL)
 					);
 					DB::insert('competition_round_matches')
 					->columns(array_keys($competition_round_match))

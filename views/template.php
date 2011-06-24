@@ -15,6 +15,18 @@
 	<body>
 		<div id="header">
 			<div id="logo"><a href="" title=""><img src="/media/img/logo.png" alt="" /></a></div>
+			<div id="account">
+				<ul>
+<?php if (Auth::instance()->logged_in('login')): ?>
+					<li<?php if ($controller == 'user' AND $action == 'profile'): ?> class="current"<?php endif; ?>><a href="/user/profile"><?php echo __('Profile'); ?></a></li>
+					<li<?php if ($controller == 'user' AND $action == 'logout'): ?> class="current"<?php endif; ?>><a href="/user/logout"><?php echo __('Logout'); ?></a></li>
+<?php else: ?>
+					<li<?php if ($controller == 'user' AND $action == 'login'): ?> class="current"<?php endif; ?>><a href="/user/login"><?php echo __('Login'); ?></a></li>
+					<li<?php if ($controller == 'user' AND $action == 'lostpassword'): ?> class="current"<?php endif; ?>><a href="/user/lostpassword"><?php echo __('Lost password'); ?></a></li>
+					<li<?php if ($controller == 'user' AND $action == 'register'): ?> class="current"<?php endif; ?>><a href="/user/register"><?php echo __('Register'); ?></a></li>
+<?php endif; ?>
+				</ul>
+			</div>
 		</div>
 		<div id="sidebar">
 			<ul>
@@ -38,14 +50,6 @@
 					</ul>
 <?php endif; ?>
 				</li>
-<?php if (Auth::instance()->logged_in('login')): ?>
-				<li<?php if ($controller == 'user' AND $action == 'profile'): ?> class="current"<?php endif; ?>><a href="/user/profile"><?php echo __('Profile'); ?></a></li>
-				<li<?php if ($controller == 'user' AND $action == 'logout'): ?> class="current"<?php endif; ?>><a href="/user/logout"><?php echo __('Logout'); ?></a></li>
-<?php else: ?>
-				<li<?php if ($controller == 'user' AND $action == 'register'): ?> class="current"<?php endif; ?>><a href="/user/register"><?php echo __('Register'); ?></a></li>
-				<li<?php if ($controller == 'user' AND $action == 'login'): ?> class="current"<?php endif; ?>><a href="/user/login"><?php echo __('Login'); ?></a></li>
-				<li<?php if ($controller == 'user' AND $action == 'lostpassword'): ?> class="current"<?php endif; ?>><a href="/user/lostpassword"><?php echo __('Lost password'); ?></a></li>
-<?php endif; ?>
 			</ul>
 		</div>
 		<div id="main">

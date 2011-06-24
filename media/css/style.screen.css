@@ -17,6 +17,13 @@ h1 { font-size: 27px; }
 
 /** header **/
 #header { height: 40px; width: 100%; background: #333 url(../img/default/header.png) repeat-x; position: absolute; top: 0; left: 0; z-index: 3; color: #fff; }
+#header #logo { float: left; }
+#header #account { float: right; }
+#header #account ul { list-style: none; margin: 0; }
+#header #account ul li { float: left; }
+#header #account ul li:first-child { border-left: 1px solid #000; }
+#header #account ul li a { display: block; color: #ccc; font-size: 12px; line-height: 40px; height: 40px; padding: 0 10px; border-left: 1px solid #555; border-right: 1px solid #000; text-shadow: 1px 0 #000; }
+#header #account ul li a:hover { color: #fff; }
 
 /** sidebar **/
 #sidebar { height: 100%; width: 240px; position: absolute; top: 0; left: 0; z-index: 2; padding: 40px 0 0 0; }
