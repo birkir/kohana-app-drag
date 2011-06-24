@@ -10,50 +10,20 @@ class Controller_Import extends Controller_Template {
 	{
 	}
 
-	public function action_fix_round($id = 0)
-	{
-		$matches = ORM::factory('competition_round_match')
-		->where('competition_round_id', '=', $id)
-		->find_all();
-
-		foreach ($matches as $match)
-		{
-			$car_a = $match->carnumber_a;
-			$car_b = $match->carnumber_b;
-
-			$comp_a = ORM::factory('competition_round_competitor')
-			->where('competition_round_id', '=', $id)
-			->where('identity', '=', $car_a)
-			->find();
-
-			$comp_b = ORM::factory('competition_round_competitor')
-			->where('competition_round_id', '=', $id)
-			->where('identity', '=', $car_b)
-			->find();
-
-			if ($comp_a->loaded()) {
-				$m_a = ORM::factory('competition_round_match', $match->id);
-				$m_a->competitor_a = $comp_a->id;
-				$m_a->save();
-			}
-
-			if ($comp_b->loaded()) {
-				$m_b = ORM::factory('competition_round_match', $match->id);
-				$m_b->competitor_a = $comp_b->id;
-				$m_b->save();
-			}
-		}
-	}
-
 	public function action_times()
 	{
 		$view = Form::open('/import/times', array('enctype' => 'multipart/form-data'));
+		$view .= Form::label('date', 'Date:');
+		$view .= Form::input('date');
+		$view .= Form::select('round', ORM::factory('competition_round')->order_by('competition_id', 'ASC')->find_all()->as_array('id', 'name'));
 		$view .= Form::file('file');
 		$view .= Form::submit(NULL, 'Process');
 		$view .= Form::close();
 
 		if (isset($_FILES['file']['tmp_name']))
 		{
+			$round = $_POST['round'];
+			
 			$filename = $_FILES['file']['tmp_name'];
 
 			$rows = str_getcsv(file_get_contents($filename), "\n");
@@ -83,7 +53,7 @@ class Controller_Import extends Controller_Template {
 					'660mph' => (double) self::parse_time($columns['Mph1'], 2),
 					'1320ft' => (double) self::parse_time($columns['1320Foot'], 3),
 					'1320mph' => (double) self::parse_time($columns['Mph2'], 2),
-					'date' => date('Y-m-d H:i:s', strtotime($columns['Time']))
+					'date' => date('Y-m-d H:i:s', strtotime(isset($columns['Time']) ? $columns['Time'] : $_POST['date']))
 				);
 
 				list($time_id, $r) = DB::insert('times')
@@ -95,14 +65,14 @@ class Controller_Import extends Controller_Template {
 
 				if ($i == 1){ $last = $columns; continue; }
 
-				if ($i % 2 == 1)
+				if (isset($columns['Time']) AND $last['Time'] == $columns['Time'])
 				{
 					$competition_round_match = array(
-						'competition_round_id' => 5,
+						'competition_round_id' => $round,
 						'time_a' => $last['TimeID'],
 						'time_b' => $time_id,
-						'competitor_a' => DB::select('id')->from('competition_round_competitors')->where('identity', '=', UTF8::trim($last['CarNumber']))->where('competition_round_id', '=', 5),
-						'competitor_b' => DB::select('id')->from('competition_round_competitors')->where('identity', '=', UTF8::trim($columns['CarNumber']))->where('competition_round_id', '=', 5),
+						'competitor_a' => DB::select('id')->from('competition_round_competitors')->where('identity', '=', UTF8::trim($last['CarNumber']))->where('competition_round_id', '=', $round),
+						'competitor_b' => DB::select('id')->from('competition_round_competitors')->where('identity', '=', UTF8::trim($columns['CarNumber']))->where('competition_round_id', '=', $round),
 						'carnumber_a' => UTF8::trim($last['CarNumber']),
 						'carnumber_b' => UTF8::trim($columns['CarNumber']),
 						'won' => (isset($last['Win']) ? ($last['Win'] == 1 ? 'a' : 'b') : NULL)
