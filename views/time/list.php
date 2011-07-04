@@ -13,8 +13,8 @@
 		</tr>
 	</thead>
 	<tbody>
-<?php foreach ($matches as $match): ?>
-<?php $time = ($competitor_id == $match->competitor_a) ? $match->a_time : $match->b_time; ?>
+<?php foreach ($times as $time): ?>
+<?php if ($time->{'60ft'} == '0.000' AND $time->{'660ft'} == '0.000' AND $time->{'1320ft'} == '0.000') continue; ?>
 		<tr>
 			<td><?php echo $time->id; ?></td>
 			<td><?php echo $time->date; ?></td>

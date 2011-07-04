@@ -29,32 +29,35 @@ class Controller_Car extends Controller_Template {
 
 		if ($view->car->user->id != Auth::instance()->get_user()->id)
 		{
-			$view->errors = array(
-				'No write access!'
-			);
+			Request::current()->redirect('/car');
 		}
-		else
+		
+		if ($_POST)
 		{
-			if ($_POST)
+			try
 			{
-				try
-				{
-					$view->car->values($_POST)->check()->save();
-					$view->message = 'Updated values';
-				}
-				catch(Kohana_Validate_Exception $e)
-				{
-					$view->errors = $e->errors();
-				}
+				$view->car->values($_POST)->check()->save();
+				$view->message = 'Updated values';
+			}
+			catch(Kohana_Validate_Exception $e)
+			{
+				$view->errors = $e->errors();
 			}
 		}
 
 		$this->block('Edit car', $view);
 	}
 
+	public function action_details($id = 0)
+	{
+		$this->block('Details', 'Car details, add mods, set parameters etc.');
+	}
+
 	public function action_garage()
 	{
-		
+		$cars = ORM::factory('car')->where('user_id', '=', Auth::instance()->get_user()->id)->find_all();
+
+		$this->block('Garage', View::factory('car/list')->set('cars', $cars));
 	}
 
 } // End Car

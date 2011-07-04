@@ -59,6 +59,7 @@ class Controller_Competition extends Controller_Template {
 		->find_all();
 
 		View::set_global('id', $competitor->round->id);
+		$_GET['id'] = $competitor->round->competition->id;
 
 		$view = View::factory('competition/round/competitor/graph')
 		->set('matches', $matches)

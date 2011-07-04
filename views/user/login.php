@@ -7,6 +7,9 @@
 
 			<dt><label for="f_password"><?php echo __('Password'); ?></label></dt>
 			<dd><input type="password" name="password" id="f_password" /></dd>
+
+			<dt><input type="checkbox" name="remember" id="f_remember" /> &nbsp;<label for="f_remember"><?php echo __('Remember me'); ?></label></dt>
+			<dd></dd>
 		</dl>
 		<input type="submit" value="<?php echo __('Login'); ?>" />
 		<input type="button" onclick="window.location='/user/lostpassword'" value="<?php echo __('Lost password'); ?>" />

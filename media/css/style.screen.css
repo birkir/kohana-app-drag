@@ -54,7 +54,8 @@ h1 { font-size: 27px; }
 
 /** table **/
 table.ui-table { width: 100%; text-align: left; }
-table.ui-table thead tr td { font-weight: bold; color: #151515; font-size: 1.3em; padding-bottom: 2px; border-bottom: 1px solid #BDBDBD; }
+table.ui-table thead tr th,
+table.ui-table thead tr td { font-weight: bold; color: #151515; font-size: 1.3em; padding-bottom: 2px; border-bottom: 1px solid #BDBDBD; cursor: pointer; }
 table.ui-table tbody tr td { height: 30px; vertical-align: middle; border-bottom: 1px solid #dadada; border-top: 1px solid #ffffff; font-size: 1.3em; padding: 0 4px; }
 table.ui-table tbody tr th { height: 30px; vertical-align: middle; border-bottom: 1px solid #dadada; border-top: 1px solid #ffffff; font-size: 1.3em; font-weight: bold; padding: 0 4px; }
 table.ui-table tbody tr:nth-child(2n+1) td,

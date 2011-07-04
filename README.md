@@ -5,8 +5,9 @@ This is an application to allow users to sign up for an account. Add their car t
 
 The application will create some statistics of the information.
 
+Changelog 0.1.4b
 
-Weather info
-
-http://vedur.datamarket.net/?fromdate=7.+4.+2011&todate=7.+4.+2011&freq=day&st=1473&attr=t&attr=rh&attr=p&attr=r&attr=d
-
+ - Hægt að raða eftir dálkum í öllum töflum
+ - Stuðningur við "Index" tíma
+ - Muna mig fídus við innskráningu
+ - 

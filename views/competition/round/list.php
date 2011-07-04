@@ -1,11 +1,11 @@
 <table class="ui-table">
 	<thead>
 		<tr>
-			<td><?php echo __('#'); ?></td>
-			<td><?php echo __('Name'); ?></td>
-			<td><?php echo __('Track'); ?></td>
-			<td><?php echo __('Date'); ?></td>
-			<td><?php echo __('Competitors'); ?></td>
+			<th><?php echo __('#'); ?></th>
+			<th><?php echo __('Name'); ?></th>
+			<th><?php echo __('Track'); ?></th>
+			<th><?php echo __('Date'); ?></th>
+			<th><?php echo __('Competitors'); ?></th>
 		</tr>
 	</thead>
 	<tbody>

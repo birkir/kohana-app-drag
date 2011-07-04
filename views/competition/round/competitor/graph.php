@@ -110,6 +110,16 @@
 		graph5.balloonText = '[[value]] - RT';
 		chart.addGraph(graph5);
 
+		var graph6 = new AmCharts.AmGraph();
+		graph6.valueAxis = timeAxis;
+		graph6.valueField = "index";
+		graph6.type = "smoothedLine";
+		graph6.bullet = "none";
+		graph6.lineThickness = 2;
+		graph6.hideBulletsCount = 30;
+		graph6.balloonText = '[[value]] - Index';
+		chart.addGraph(graph6);
+
 		var chartCursor = new AmCharts.ChartCursor();
 		chart.addChartCursor(chartCursor);
 

@@ -17,8 +17,12 @@
 			<td><?php echo $competitor->car; ?></td>
 		</tr>
 		<tr>
+			<th><?php echo __('Index'); ?></th>
+			<td><?php echo $time->index; ?></td>
+		</tr>
+		<tr>
 			<th><?php echo __('RT'); ?></th>
-			<td><?php echo $time->rt; ?></td>
+			<td><?php echo $time->rt; ?> s</td>
 		</tr>
 		<tr>
 			<th><?php echo __('60ft time'); ?></th>

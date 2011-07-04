@@ -1,13 +1,13 @@
 <table class="ui-table">
 	<thead>
 		<tr>
-			<td><?php echo __('#'); ?></td>
-			<td style="text-align: center;"><?php echo __('Car'); ?></td>
-			<td style="text-align: center;"><?php echo __('Competitor'); ?></td>
-			<td style="width: 3%;text-align: center;">vs</td>
-			<td style="text-align: center;"><?php echo __('Competitor'); ?></td>
-			<td style="text-align: center;"><?php echo __('Car'); ?></td>
-			<td style="text-align: center;"><?php echo __('Times'); ?></td>
+			<th><?php echo __('#'); ?></th>
+			<th style="text-align: center;"><?php echo __('Car'); ?></th>
+			<th style="text-align: center;"><?php echo __('Competitor'); ?></th>
+			<th style="width: 3%;text-align: center;">vs</th>
+			<th style="text-align: center;"><?php echo __('Competitor'); ?></th>
+			<th style="text-align: center;"><?php echo __('Car'); ?></th>
+			<th style="text-align: center;"><?php echo __('Times'); ?></th>
 		</tr>
 	</thead>
 	<tbody>

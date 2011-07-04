@@ -1,10 +1,10 @@
 <table class="ui-table">
 	<thead>
 		<tr>
-			<td><?php echo __('#'); ?></td>
-			<td><?php echo __('Class'); ?></td>
-			<td><?php echo __('Description'); ?></td>
-			<td><?php echo __('Rules'); ?></td>
+			<th><?php echo __('#'); ?></th>
+			<th><?php echo __('Class'); ?></th>
+			<th><?php echo __('Description'); ?></th>
+			<th><?php echo __('Rules'); ?></th>
 		</tr>
 	</thead>
 	<tbody>

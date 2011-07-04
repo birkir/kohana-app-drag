@@ -51,5 +51,12 @@ return array(
 	'Atmospheric Pressure' => 'Loftþrýstingur',
 	'Wind direction' => 'Vindátt',
 	'Wind speed' => 'Vindhraði',
-	'Profile' => 'Aðgangur'
+	'Profile' => 'Aðgangur',
+	'Add car' => 'Skrá bíl',
+	'Garage' => 'Bílskúrinn',
+	'Licence plate' => 'Númeraplata',
+	'Save' => 'Vista',
+	'Delete' => 'Eyða',
+	'Add' => 'Skrá',
+	'Create' => 'Búa til'
 );

@@ -1,12 +1,12 @@
 <table class="ui-table">
 	<thead>
 		<tr>
-			<td><?php echo __('#'); ?></td>
-			<td><?php echo __('Class'); ?></td>
-			<td><?php echo __('Identity'); ?></td>
-			<td><?php echo __('Driver'); ?></td>
-			<td><?php echo __('Car'); ?></td>
-			<td><?php echo __('Actions'); ?></td>
+			<th><?php echo __('#'); ?></th>
+			<th><?php echo __('Class'); ?></th>
+			<th><?php echo __('Identity'); ?></th>
+			<th><?php echo __('Driver'); ?></th>
+			<th><?php echo __('Car'); ?></th>
+			<th><?php echo __('Actions'); ?></th>
 		</tr>
 	</thead>
 	<tbody>

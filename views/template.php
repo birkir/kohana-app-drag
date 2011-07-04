@@ -10,6 +10,7 @@
 		<script type="text/javascript" src="/media/js/amcharts/raphael.js" ></script>
 		<script type="text/javascript" src="/media/js/jquery-1.6.1.min.js"></script>
 		<script type="text/javascript" src="/media/js/jquery-ui-1.8.7.min.js"></script>
+		<script type="text/javascript" src="/media/js/jquery-tablesorter-2.0.js"></script>
 		<script type="text/javascript" src="/media/js/drag.js"></script>
 	</head>
 	<body>
@@ -31,7 +32,15 @@
 		<div id="sidebar">
 			<ul>
 				<li<?php if ($controller == 'home'): ?> class="current"<?php endif; ?>><a href="/home"><?php echo __('Home'); ?></a></li>
-				<li<?php if ($controller == 'car'): ?> class="current"<?php endif; ?>><a href="/car"><?php echo __('Cars'); ?></a></li>
+				<li<?php if ($controller == 'car'): ?> class="current"<?php endif; ?>>
+					<a href="/car"><?php echo __('Cars'); ?></a>
+<?php if ($controller == 'car'): ?>
+					<ul>
+						<li<?php if ($action == 'garage'): ?> class="current"<?php endif; ?>><a href="/car/garage"><?php echo __('Garage'); ?></a></li>
+						<li<?php if ($action == 'add'): ?> class="current"<?php endif; ?>><a href="/car/add"><?php echo __('Add car'); ?></a></li>
+					</ul>
+<?php endif; ?>
+				</li>
 				<li<?php if ($controller == 'time'): ?> class="current"<?php endif; ?>><a href="/time"><?php echo __('Times'); ?></a></li>
 				<li<?php if ($controller == 'competition'): ?> class="current"<?php endif; ?>>
 					<a href="/competition"><?php echo __('Competitions'); ?></a>
@@ -58,5 +67,16 @@
 <?php endif; ?>
 <?php echo isset($view) ? $view : NULL; ?>
 		</div>
+		<script type="text/javascript">
+		  var _gaq = _gaq || [];
+		  _gaq.push(['_setAccount', 'UA-24164997-1']);
+		  _gaq.push(['_trackPageview']);
+		
+		  (function() {
+			 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		  })();
+		</script>
 	</body>
 </html>
