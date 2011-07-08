@@ -19,7 +19,7 @@
 			<td style="text-align: center;">vs</td>
 			<td style="text-align: center;"><?php echo $match->b_competitor->driver; ?></td>
 			<td style="text-align: center;"><?php echo $match->b_competitor->car; ?></td>
-			<td style="text-align: center;"><a href="/competition/match/<?php echo $match->id; ?>?id=<?php echo $_GET['id']; ?>&amp;r=<?php echo $match->round->id; ?>"><?php echo __('View timeslip'); ?></a></td>
+			<td style="text-align: center;"><a href="/competition/match/<?php echo $match->id; ?>/<?php echo $parent; ?>"><?php echo __('View timeslip'); ?></a></td>
 		</tr>
 <?php endforeach; ?>
 	</tbody>

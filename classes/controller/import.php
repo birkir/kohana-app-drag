@@ -56,7 +56,7 @@ class Controller_Import extends Controller_Template {
 					'identity' => trim($columns['CarNumber']),
 					'lane' => NULL,
 					'won' => intval(isset($columns['Win']) ? $columns['Win'] : 0),
-					'index' => (double) self::parse_time($columns['DialIn'], 3),
+					'index' => (double) isset($columns['DialIn']) ? self::parse_time($columns['DialIn'], 3) : 0.000,
 					'rt' => (double) self::parse_time($columns['RT'], 3),
 					'60ft' => (double) self::parse_time($columns['60Foot'], 3),
 					'660ft' => (double) self::parse_time($columns['660Foot'], 3),

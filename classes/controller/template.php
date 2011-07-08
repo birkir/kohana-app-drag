@@ -25,6 +25,17 @@ class Controller_Template extends Kohana_Controller_Template {
 		// Get action name
 		$this->action = Request::current()->action();
 
+		if ( ! Auth::instance()->logged_in() AND Cookie::get('authautologin'))
+		{
+			// Try auto login
+			Auth::instance()->auto_login();
+		}
+
+		if ($this->user = Auth::instance()->get_user())
+		{
+			I18n::lang($this->user->language);
+		}
+
 		// Check for parameters
 		if (($this->auth_required !== FALSE AND Auth::instance()->logged_in($this->auth_required) === FALSE) OR (is_array($this->secure_actions) AND array_key_exists($this->action, $this->secure_actions) AND Auth::instance()->logged_in($this->secure_actions[$this->action]) === FALSE))
 		{
@@ -48,9 +59,11 @@ class Controller_Template extends Kohana_Controller_Template {
 			$this->template->view = '';
 			$this->template->styles = array();
 			$this->template->scripts = array();
+			View::set_global('user', $this->user ? $this->user : ORM::factory('user'));
 			View::set_global('action', $this->action);
 			View::set_global('controller', Request::current()->controller());
 			View::set_global('id', Request::current()->param('id'));
+			View::set_global('parent', Request::current()->param('parent'));
 		}
 	}
 
@@ -82,6 +95,11 @@ class Controller_Template extends Kohana_Controller_Template {
 	{
 		if ($this->auto_render)
 		{
+			if (isset($_GET['debug']))
+			{
+				$this->block('Debug', View::factory('profiler/stats'));
+			}
+			
 			if ($this->block_clearfix)
 			{
 				$this->template->view .= '<div class="clearfix"></div>'."\n";
@@ -107,12 +125,12 @@ class Controller_Template extends Kohana_Controller_Template {
 
 } // End Template
 
-function p($str = NULL)
+function p($str = NULL, $default = NULL)
 {
 	if (isset($_POST[$str]))
 	{
 		return $_POST[$str];
 	}
 
-	return NULL;
+	return ($default == NULL) ? NULL : $default;
 }

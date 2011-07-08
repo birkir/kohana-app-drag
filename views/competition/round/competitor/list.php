@@ -17,7 +17,7 @@
 			<td><?php echo $competitor->identity; ?></td>
 			<td><?php echo $competitor->driver; ?></td>
 			<td><?php echo $competitor->car; ?></td>
-			<td><a href="/competition/competitor/<?php echo $competitor->id; ?>?id=<?php echo $id; ?>"><?php echo __('View details'); ?></a></td>
+			<td><a href="/competition/competitor/<?php echo $competitor->id; ?>/<?php echo $parent; ?>"><?php echo __('View details'); ?></a></td>
 		</tr>
 <?php endforeach; ?>
 	</tbody>

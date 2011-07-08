@@ -22,8 +22,6 @@ class FB {
 			)
 		);
 
-		$this->_session = $this->_facebook->getSession();
-
 		try
 		{
 			$this->_me = $this->_facebook->api('/me');
@@ -37,9 +35,9 @@ class FB {
 	public static function instance()
 	{
 		if ( ! isset(self::$_instance))
-			Kohana_Facebook::$_instance = new Kohana_Facebook;
+			FB::$_instance = new FB;
 
-		return Kohana_Facebook::$_instance;
+		return FB::$_instance;
 	}
 
 	public function app_id()

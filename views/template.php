@@ -32,6 +32,7 @@
 		<div id="sidebar">
 			<ul>
 				<li<?php if ($controller == 'home'): ?> class="current"<?php endif; ?>><a href="/home"><?php echo __('Home'); ?></a></li>
+				<li<?php if ($controller == 'user' AND $action == 'list'): ?> class="current"<?php endif; ?>><a href="/user/list"><?php echo __('Users'); ?></a></li>
 				<li<?php if ($controller == 'car'): ?> class="current"<?php endif; ?>>
 					<a href="/car"><?php echo __('Cars'); ?></a>
 <?php if ($controller == 'car'): ?>
@@ -44,15 +45,16 @@
 				<li<?php if ($controller == 'time'): ?> class="current"<?php endif; ?>><a href="/time"><?php echo __('Times'); ?></a></li>
 				<li<?php if ($controller == 'competition'): ?> class="current"<?php endif; ?>>
 					<a href="/competition"><?php echo __('Competitions'); ?></a>
-<?php if (isset($_GET['id']) AND $controller == 'competition'): ?>
+					
+<?php if ($controller == 'competition' AND $action != 'index'): ?>
 					<ul>
-						<li<?php if ($action == 'classes'): ?> class="current"<?php endif; ?>><a href="/competition/classes?id=<?php echo $_GET['id']; ?>"><?php echo __('Classes'); ?></a></li>
-						<li<?php if ($action == 'rounds'): ?> class="current"<?php endif; ?>>
-							<a href="/competition/rounds?id=<?php echo $_GET['id']; ?>"><?php echo __('Rounds'); ?></a>
-<?php if ($id > 0): ?>
+						<li<?php if (substr($action,0,5) == 'class'): ?> class="current"<?php endif; ?>><a href="/competition/classes/<?php echo $parent > 0 ? $parent : $id; ?>"><?php echo __('Classes'); ?></a></li>
+						<li<?php if (substr($action,0,5) == 'round'): ?> class="current"<?php endif; ?>>
+							<a href="/competition/rounds/<?php echo $parent > 0 ? $parent : $id; ?>"><?php echo __('Rounds'); ?></a>
+<?php if ($parent): ?>
 							<ul>
-								<li<?php if ($action == 'competitors' OR $action == 'competitor'): ?> class="current"<?php endif; ?>><a href="/competition/competitors/<?php echo $id; ?>?id=<?php echo $_GET['id']; ?>"> <?php echo __('Competitors'); ?></a></li>
-								<li<?php if ($action == 'matches' OR $action == 'match'): ?> class="current"<?php endif; ?>><a href="/competition/matches/<?php echo $id; ?>?id=<?php echo $_GET['id']; ?>"> <?php echo __('Matches'); ?></a></li>
+								<li<?php if ($action == 'competitors' OR $action == 'competitor'): ?> class="current"<?php endif; ?>><a href="/competition/competitors/<?php echo $id; ?>/<?php echo $parent; ?>"> <?php echo __('Competitors'); ?></a></li>
+								<li<?php if ($action == 'matches' OR $action == 'match'): ?> class="current"<?php endif; ?>><a href="/competition/matches/<?php echo $id; ?>/<?php echo $parent; ?>"> <?php echo __('Matches'); ?></a></li>
 							</ul>
 <?php endif; ?>
 						</li>

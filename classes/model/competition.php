@@ -11,4 +11,13 @@ class Model_Competition extends ORM {
 		)
 	);
 
+	public function rules()
+	{
+		return array(
+			'name' => array(
+				array('not_empty')
+			)
+		);
+	}
+
 } // End Competition
