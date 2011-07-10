@@ -17,8 +17,6 @@ class Controller_Competition extends Controller_Template {
 		'competitor_delete' => array('admin')
 	);
 
-	public $competition;
-
 	public function before()
 	{
 		parent::before();
