@@ -43,6 +43,7 @@
 <?php endif; ?>
 				</li>
 				<li<?php if ($controller == 'time'): ?> class="current"<?php endif; ?>><a href="/time"><?php echo __('Times'); ?></a></li>
+				<li<?php if ($controller == 'track'): ?> class="current"<?php endif; ?>><a href="/track"><?php echo __('Tracks'); ?></a></li>
 				<li<?php if ($controller == 'competition'): ?> class="current"<?php endif; ?>>
 					<a href="/competition"><?php echo __('Competitions'); ?></a>
 					
@@ -53,8 +54,8 @@
 							<a href="/competition/rounds/<?php echo $parent > 0 ? $parent : $id; ?>"><?php echo __('Rounds'); ?></a>
 <?php if ($parent): ?>
 							<ul>
-								<li<?php if ($action == 'competitors' OR $action == 'competitor'): ?> class="current"<?php endif; ?>><a href="/competition/competitors/<?php echo $id; ?>/<?php echo $parent; ?>"> <?php echo __('Competitors'); ?></a></li>
-								<li<?php if ($action == 'matches' OR $action == 'match'): ?> class="current"<?php endif; ?>><a href="/competition/matches/<?php echo $id; ?>/<?php echo $parent; ?>"> <?php echo __('Matches'); ?></a></li>
+								<li<?php if (substr($action,0,10) == 'competitor'): ?> class="current"<?php endif; ?>><a href="/competition/competitors/<?php echo $id; ?>/<?php echo $parent; ?>"> <?php echo __('Competitors'); ?></a></li>
+								<li<?php if (substr($action,0,5) == 'match'): ?> class="current"<?php endif; ?>><a href="/competition/matches/<?php echo $id; ?>/<?php echo $parent; ?>"> <?php echo __('Matches'); ?></a></li>
 							</ul>
 <?php endif; ?>
 						</li>
