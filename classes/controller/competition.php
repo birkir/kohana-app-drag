@@ -320,6 +320,62 @@ class Controller_Competition extends Controller_Template {
 		$this->block('Add competitor', $view);
 	}
 
+	public function action_competitor_edit($competitor_id = 0, $round_id = 0)
+	{
+		$round = ORM::factory('competition_round', $round_id);
+		$competitor = ORM::factory('competition_round_competitor', $competitor_id);
+
+		$view = View::factory('competition/round/competitor/fieldset')
+		->set('rounds', $round->competition->rounds->find_all()->as_array('id', 'name'))
+		->set('classes', $round->competition->classes->find_all()->as_array('id', 'name'))
+		->set('item', $competitor);
+
+		View::set_global('id', $round_id);
+		View::set_global('parent', $round->competition->id);
+
+		if ($_POST)
+		{
+			try
+			{
+				$competitor
+					->values($_POST)
+					->save();
+
+				$this->request->redirect('/competition/competitors/'.$round_id.'/'.$round->competition->id.'#msg,success,'.__('Successfully edited competitor'));
+			}
+			catch (ORM_Validation_Exception $e)
+			{
+				$view->set('errors', $e->errors());
+			}
+		}
+
+		$this->block('Edit competitor', $view);
+	}
+
+	public function action_competitor_delete($competitor_id = 0, $round_id = 0)
+	{
+		$this->auto_render = FALSE;
+
+		$competitor = ORM::factory('competition_round_competitor', $competitor_id);
+
+		if ($competitor->delete())
+		{
+			$body = json_encode(array(
+				'status' => 200,
+				'message' => __('Competitor deleted successfully.')
+			));
+		}
+		else
+		{
+			$body = json_encode(array(
+				'status' => 500,
+				'message' => __('Competitor was not deleted.')
+			));
+		}
+
+		$this->response->body($body);
+	}
+
 	public function action_matches($id = 0)
 	{
 		$view = View::factory('competition/match/list')
