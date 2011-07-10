@@ -5,7 +5,16 @@ class Controller_Competition extends Controller_Template {
 	public $secure_actions = array(
 		'add' => array('admin'),
 		'edit' => array('admin'),
-		'delete' => array('admin')
+		'delete' => array('admin'),
+		'class_add' => array('admin'),
+		'class_edit' => array('admin'),
+		'class_delete' => array('admin'),
+		'round_add' => array('admin'),
+		'round_edit' => array('admin'),
+		'round_delete' => array('admin'),
+		'competitor_add' => array('admin'),
+		'competitor_edit' => array('admin'),
+		'competitor_delete' => array('admin')
 	);
 
 	public $competition;
