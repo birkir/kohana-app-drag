@@ -3,9 +3,9 @@
 class Controller_User extends Controller_Template {
 
 	public $secure_actions = array(
-		'profile' => array(
-			'login'
-		));
+		'profile' => array('login'),
+		'logout'  => array('login')
+	);
 
 	/**
 	 * Register user by using the Auth method
@@ -52,10 +52,19 @@ class Controller_User extends Controller_Template {
 				// Add login role to user
 				$user->add('roles', ORM::factory('role')->where('name', '=', 'login')->find());
 
+				// Add activity log
 				ORM::factory('activity')->values(array(
 					'user_id' => $user->id,
 					'message' => ':user regiestered'
 				))->save();
+
+				// Email the user some information
+				Email::factory(__('Welcome to :sitename', array(
+					':sitename' => Kohana::config('drag.sitename')
+				)), View::factory('user/email/register'), 'text/html')
+				->to($user->email)
+				->from(Kohana::config('drag.email'), Kohana::config('drag.sitename'))
+				->send();
 
 				// Redirect to user profile
 				Request::currenct()->redirect('user/profile');
