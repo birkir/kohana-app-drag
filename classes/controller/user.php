@@ -104,7 +104,7 @@ class Controller_User extends Controller_Template {
 				$u = Auth::instance()->get_user();
 				$u = ORM::factory('user', $u->id);
 				$u->logins++;
-				$u->last_login = date('Y-m-d H:i:s');
+				$u->last_login = time();
 				$u->ip = inet_pton(self::get_ip());
 				$u->save();
 

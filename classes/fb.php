@@ -11,7 +11,7 @@ class FB {
 
 	protected function __construct()
 	{
-		include Kohana::find_file('vendor', 'facebook/src/facebook');
+		require_once Kohana::find_file('vendor', 'facebook/src/facebook');
 
 		// Do class setup
 		$this->_facebook = new Facebook(
