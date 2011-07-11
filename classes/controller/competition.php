@@ -195,9 +195,25 @@ class Controller_Competition extends Controller_Template {
 
 	public function action_round($competition_id = 0, $round_id = 0)
 	{
+		$round = ORM::factory('competition_round', $round_id);
+
+		$left = $round->matches
+		->where('carnumber_b', '=', 'BYE')
+		->find_all()
+		->count();
+
+		$right = $round->matches
+		->where('carnumber_a', '=', 'BYE')
+		->find_all()
+		->count();
+
+		if ($right == 0){ $right = 1; }
+
+		$lr_ratio = number_format(($left/$right)*100,2,',','.').'%';
+
 		$this->block('Best times', 'Bestu tímar dagsins', 'floatl');
 		$this->block('Best competitors', 'Fljótustu keppendurnir', 'floatr');
-		$this->block('Track info', 'Information of track', 'floatl');
+		$this->block('Round info', 'Information of track<br />Ferðir í vinstri braut: '.$lr_ratio, 'floatl');
 		$this->block('weather info', 'Average weather', 'floatr');
 	}
 
