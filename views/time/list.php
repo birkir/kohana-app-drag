@@ -3,6 +3,7 @@
 		<tr>
 			<th><?php echo __('#'); ?></th>
 			<th><?php echo __('Date'); ?></th>
+			<th><?php echo __('Identity'); ?></th>
 			<th><?php echo __('Index'); ?></th>
 			<th><?php echo __('RT'); ?></th>
 			<th><?php echo __('60ft time'); ?></th>
@@ -18,6 +19,7 @@
 		<tr>
 			<td><?php echo $time->id; ?></td>
 			<td><?php echo $time->date; ?></td>
+			<td><?php echo $time->identity; ?></td>
 			<td><?php echo $time->index; ?> s</td>
 			<td><?php echo $time->rt; ?> s</td>
 			<td><?php echo $time->{'60ft'}; ?> s</td>
