@@ -54,13 +54,16 @@ class Controller_Import extends Controller_Template {
 					'car_id' => NULL,
 					'track_id' => 1,
 					'identity' => trim($columns['CarNumber']),
-					'lane' => NULL,
+					'lane' => ($i % 2 == 1 ? 'l' : 'r'),
 					'won' => intval(isset($columns['Win']) ? $columns['Win'] : 0),
+					'foul' => intval(isset($columns['Red']) ? $columns['Red'] : 0),
 					'index' => (double) isset($columns['DialIn']) ? self::parse_time($columns['DialIn'], 3) : 0.000,
 					'rt' => (double) self::parse_time($columns['RT'], 3),
 					'60ft' => (double) self::parse_time($columns['60Foot'], 3),
+					'594ft' => (double) isset($columns['594ft']) ? self::parse_time($columns['594ft']) : 0.000,
 					'660ft' => (double) self::parse_time($columns['660Foot'], 3),
 					'660mph' => (double) self::parse_time($columns['Mph1'], 2),
+					'1254ft' => (double) isset($columns['1254ft']) ? self::parse_time($columns['1254ft']) : 0.000,
 					'1320ft' => (double) self::parse_time($columns['1320Foot'], 3),
 					'1320mph' => (double) self::parse_time($columns['Mph2'], 2),
 					'date' => date('Y-m-d H:i:s', strtotime(isset($columns['Time']) ? $columns['Time'] : $_POST['date']))
@@ -70,7 +73,7 @@ class Controller_Import extends Controller_Template {
 				->columns(array_keys($time))
 				->values($time)
 				->execute();
-				
+
 				$columns['TimeID'] = $time_id;
 
 				if ($i == 1){ $last = $columns; continue; }
@@ -87,6 +90,7 @@ class Controller_Import extends Controller_Template {
 						'carnumber_b' => UTF8::trim($columns['CarNumber']),
 						'won' => (isset($last['Win']) ? ($last['Win'] == 1 ? 'a' : 'b') : NULL)
 					);
+
 					DB::insert('competition_round_matches')
 					->columns(array_keys($competition_round_match))
 					->values($competition_round_match)

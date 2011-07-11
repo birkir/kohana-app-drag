@@ -12,12 +12,6 @@
 			<th><?php echo __('Atmospheric Pressure'); ?></th>
 			<td><?php echo $weather['leiðréttur loftþrýstingur í stöðvarhæð']; ?> hPa</td>
 		</tr>
-<!--
-		<tr>
-			<th><?php echo __('Precipitation'); ?></th>
-			<td><?php echo $weather['úrkoma']; ?></td>
-		</tr>
--->
 		<tr>
 			<th><?php echo __('Wind direction'); ?></th>
 			<td><?php echo $weather['vindátt']; ?>°</td>
