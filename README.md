@@ -18,11 +18,8 @@ Installation
 
   1. git clone git://github.com/kohana/kohana.git website_name
   2. git checkout 3.1/master
-  3. git submodule init
-  4. git submodule update
-  5. git rm -r application
-  6. git submodule add git://github.com/birkir/drag.git application
-  7. cd application
-  8. git submodule init && git submodule update
-  9. edit bootstrap.php for your needs
-  10. chmod 0777 cache and logs
+  3. git rm -r application
+  4. git submodule add git://github.com/birkir/drag.git application
+  5. edit application/bootstrap.php for your needs
+  6. chmod 0777 application/cache and application/logs
+  7. git submodule --recursive --init update
