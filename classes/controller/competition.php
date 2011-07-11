@@ -192,7 +192,15 @@ class Controller_Competition extends Controller_Template {
 
 		$this->block('Rounds', $view);
 	}
-	
+
+	public function action_round($competition_id = 0, $round_id = 0)
+	{
+		$this->block('Best times', 'Bestu tímar dagsins', 'floatl');
+		$this->block('Best competitors', 'Fljótustu keppendurnir', 'floatr');
+		$this->block('Track info', 'Information of track', 'floatl');
+		$this->block('weather info', 'Average weather', 'floatr');
+	}
+
 	public function action_round_add($competition_id = 0)
 	{
 		$view = View::factory('competition/round/fieldset')

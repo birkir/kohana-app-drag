@@ -13,12 +13,12 @@
 <?php foreach ($rounds as $round): ?>
 		<tr>
 			<td><?php echo $round->id; ?></td>
-			<td><a href="/competition/competitors/<?php echo $round->id; ?>/<?php echo $round->competition->id; ?>"><?php echo $round->competition->name; ?>: <?php echo $round->name; ?></a></td>
-			<td><a href="/competition/competitors/<?php echo $round->id; ?>/<?php echo $round->competition->id; ?>"><?php echo $round->track->name; ?></a></td>
-			<td><a href="/competition/competitors/<?php echo $round->id; ?>/<?php echo $round->competition->id; ?>"><?php echo $round->datetime; ?></a></td>
-			<td><a href="/competition/competitors/<?php echo $round->id; ?>/<?php echo $round->competition->id; ?>"><?php echo $round->competitors->find_all()->count(); ?></a></td>
+			<td><a href="/competition/round/<?php echo $round->id; ?>/<?php echo $round->competition->id; ?>"><?php echo $round->competition->name; ?>: <?php echo $round->name; ?></a></td>
+			<td><a href="/competition/round/<?php echo $round->id; ?>/<?php echo $round->competition->id; ?>"><?php echo $round->track->name; ?></a></td>
+			<td><a href="/competition/round/<?php echo $round->id; ?>/<?php echo $round->competition->id; ?>"><?php echo $round->datetime; ?></a></td>
+			<td><a href="/competition/round/<?php echo $round->id; ?>/<?php echo $round->competition->id; ?>"><?php echo $round->competitors->find_all()->count(); ?></a></td>
 			<td>
-				<a href="/competition/competitors/<?php echo $round->id; ?>" class="button ui-icon ui-icon-search" title="<?php echo __('View details'); ?>"></a>
+				<a href="/competition/round/<?php echo $round->id; ?>" class="button ui-icon ui-icon-search" title="<?php echo __('View details'); ?>"></a>
 <?php if ($user->has('roles', ORM::factory('role', array('name' => 'admin')))): ?>
 				<a href="/competition/round_edit/<?php echo $id; ?>/<?php echo $round->id; ?>" class="button ui-icon ui-icon-pencil" title="<?php echo __('Edit round'); ?>"></a>
 				<a href="/competition/round_delete/<?php echo $id; ?>/<?php echo $round->id; ?>" class="button ui-icon ui-icon-trash ajax item-delete" title="<?php echo __('Delete round'); ?>"></a>
