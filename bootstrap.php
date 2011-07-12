@@ -53,7 +53,7 @@ ini_set('unserialize_callback_func', 'spl_autoload_call');
 /**
  * Set the default language
  */
-I18n::lang('is-is');
+I18n::lang(isset($_GET['l']) ? $_GET['l'] : 'is-is');
 
 Cookie::$salt = 'foo-bar-baz';
 
