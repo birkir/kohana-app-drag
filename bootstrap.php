@@ -50,6 +50,7 @@ Kohana::modules(array(
 	'userguide'  => MODPATH.'userguide',  // User guide and API documentation
 ));
 
+// test
 Route::set('default', '(<controller>(/<id>(/<action>)))')
 	->defaults(array(
 		'controller' => 'dashboard',
