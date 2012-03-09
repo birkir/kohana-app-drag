@@ -50,7 +50,12 @@ Kohana::modules(array(
 	'userguide'  => MODPATH.'userguide',  // User guide and API documentation
 ));
 
-// test
+Route::set('media', 'media/<folder>/<file>', array('file' => '.+'))
+	->defaults(array(
+		'controller' => 'media',
+		'action'     => 'index'
+	));
+
 Route::set('default', '(<controller>(/<id>(/<action>)))')
 	->defaults(array(
 		'controller' => 'dashboard',

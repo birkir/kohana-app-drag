@@ -1,10 +1,10 @@
 <?php
 
-class Controller_Dashboard extends Controller {
+class Controller_Dashboard extends Controller_Base {
 
 	public function action_index()
 	{
-		$this->response->body('ABC');
+		$this->template->content = 'AwSoMe';
 	}
 
 }

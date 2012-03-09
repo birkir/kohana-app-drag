@@ -1,0 +1,114 @@
+@import "reset.less";
+@import "css3.less";
+
+/** handy **/
+.wrap { width: 990px; margin: 0 auto; }
+.boxshdw { .box-shadow(1px 1px 0 #e6e6e6); }
+.box { .boxshdw; border: 1px solid #E6E6E6; background: #fff; display: block; margin: 0 0 20px 0; }
+.boxcaption { .gradient(#f7f7f7, #f5f5f5, #fcfcfc); margin: 0; padding: 0 10px; line-height: 29px; height: 29px; font-weight: normal; text-transform: uppercase;  border-bottom: 1px solid #e6e6e6; .box-shadow(inset 0 -1px #fff, inset 0 1px #fff, 0 2px 2px 0px #f8f8f8); }
+
+/** button **/
+.button { width: auto; }
+
+/** main styles **/
+body { background: #ededed; font-family: Arial, sans-serif; }
+p { margin: 0; padding: 0; }
+
+/** layout styles **/
+.frame { .box-shadow(0 -3px 3px #cacaca); background: #fff; }
+#container { position: relative; padding-left: 231px; clear: both; }
+
+/** header **/
+header { border-bottom: 1px solid #dcdcdc; position: relative; }
+
+header #logo { padding: 20px 0 10px 20px; }
+
+header #labels { position: absolute; right: 20px; top: 20px; line-height: 27px; font-size: 11px; }
+header #labels ul { float: left; margin: 0; padding: 0; list-style: none; }
+header #labels ul li { float: left; position: relative; }
+header #labels ul li a { float: left; background: url(../img/labels.png) no-repeat; padding: 0 0 0 30px; text-decoration: none; height: 27px; }
+header #labels ul li a.user { background-position: -88px top; }
+header #labels ul li a.user:hover { background-position: -88px bottom; }
+header #labels ul li a.settings { background-position: 0px top; text-indent: -9999px; }
+header #labels ul li a.settings:hover { background-position: -88px bottom; }
+header #labels ul li a.logout { background-position: -60px top; text-indent: -9999px; }
+header #labels ul li a.logout:hover { background-position: -60px bottom; }
+header #labels ul li a span { float: left; display: block; background: url(../img/labels-bar.png) top right; padding: 0 9px 0 5px; margin: 0 2px 0 0; color: #fff; font-weight: bold; height: 27px; cursor: pointer; text-indent: auto; }
+
+header nav { display: block; border-top: 1px solid #dcdcdc; background: #f2f2f2; }
+header nav ul { float: left; }
+header nav ul li { float: left; }
+header nav ul li a { display: block; background: #f2f2f2; border-right: 1px solid #d9d9d9; font-size: 12px; text-transform: uppercase; text-decoration: none; padding: 5px 20px; color: #868686; text-shadow: 1px 1px #f9f9f9; }
+header nav ul li.current a { color: #000 !important; background: #f9f9f9; }
+header nav ul li a:hover { color: #e40000; }
+
+/** sidebar **/
+aside { width: 230px; float: left; background: #f5f5f5; margin-left: -231px; .box-shadow(inset -1px 1px 1px 0 #ececec); border-right: 1px solid #dcdcdc; padding-top: 18px; }
+
+/** sidebar :: search **/
+aside #search { margin: 0 20px 20px; background: #fff; border: 1px solid #e6e6e6; .boxshdw; }
+aside #search input[type = 'search'] { float: left; display: block; background: #fff; border: 0; outline: 0; padding: 8px 10px 8px; margin: 0; width: 136px; height: 13px; font-size: 13px; }
+aside #search input[type = 'submit'] { float: left; border: 0; border-left: 1px solid #e6e6e6; .gradient(#f2f2f2, #f9f9f9, #fcfcfc); .box-shadow(-1px 0 2px 0px #f8f8f8); height: 29px; width: 32px; text-indent: -9999px; }
+
+/** sidebar :: navigation **/
+aside nav { display: block; background: #fff; border: 1px solid #e6e6e6; margin: 0 20px 20px; .boxshdw; }
+aside nav ul { list-style: none; margin: 0; padding: 0; }
+aside nav ul li { display: block; border-top: 1px solid #e6e6e6; background: url(../img/icon-submenu.gif) 9px 13px no-repeat; }
+aside nav ul li:first-child { border-top: 0; }
+aside nav ul li a { display: block; padding: 8px 10px 8px 23px; color: #737272; text-decoration: none; font-size: 13px; }
+aside nav ul li a:hover { color: #000; }
+aside nav ul li ul { padding: 0 0 6px; }
+aside nav ul li ul li { border: 0; line-height: 11px; background: none; }
+aside nav ul li ul li a { padding: 4px 10px 6px 23px; font-size: 11px; }
+
+/** content **/
+#content { width: 100%; float: left; background: #fff; padding-top: 20px; }
+
+/** content :: section **/
+#content section { margin: 0 20px; }
+#content section .grid1 { width: 22.5%; float: left; margin-left: 21px; }
+#content section .grid1.first { margin-left: 0; }
+#content section .grid2 { width: 48.0%; float: left; margin-left: 21px; }
+#content section .grid2.first { margin-left: 0; }
+#content section .grid3 { width: 73.7%; float: left; margin-left: 21px; }
+#content section .grid3.first { margin-left: 0; }
+#content section .grid4 { width: 100%; }
+#content section .box h3 { font-size: 13px; .boxcaption; }
+
+/** table :: basic **/
+table.basic { .box; font-size: 13px; display: table; width: 100%; }
+table.basic caption { text-align: left; margin: 0; padding: 0 0 5px 0; font-size: 13px; color: #E10000; text-transform: uppercase; font-weight: bold; }
+table.basic thead tr th { .boxcaption; font-size: 13px; text-align: left; font-weight: bold; text-transform: none; border-left: 1px solid #e6e6e6; .box-shadow(inset 0 -1px 3px 0 #fff, inset 0 1px #fff); border-bottom: 0; }
+table.basic thead tr th:first-child { border-left: 0; }
+table.basic tbody tr td { border-left: 1px solid #e6e6e6; padding: 5px 10px; font-size: 12px; border-top: 1px solid #e6e6e6; }
+table.basic tbody tr td:first-child { border-left: 0; }
+table.basic tbody tr:nth-child(2n) td { background: #fafafa; }
+table.basic tbody tr:first-child td { border-top: 1px solid #e6e6e6; }
+
+/** fieldset **/
+fieldset { margin: 20px; font-size: 13px; }
+fieldset .row { display: block; position: relative; border-bottom: 1px solid #E5E5E5; padding: 10px 15px 10px 0; }
+fieldset .row:first-child { border-top: 1px solid #e5e5e5; }
+fieldset .row label { position: absolute; top: 16px; left: 0; padding: 0; margin: 0; cursor: text; width: 125px; }
+fieldset .row .right { display: block; margin: 0 0 0 125px; }
+fieldset .row .right label { position: relative; top: auto; left: auto; }
+fieldset .row .right .option { display: inline-block; padding-right: 20px; height: 20px; padding-top: 6px; }
+fieldset input[type = 'text'],
+fieldset input[type = 'number'],
+fieldset input[type = 'email'],
+fieldset input[type = 'password'],
+fieldset select,
+fieldset textarea { display: inline-block; background: #fcfcfc; border: 1px solid #dcdcdc; padding: 5px; width: 100%; height: 15px; color: #444; .box-shadow(inset 1px 1px 0 0 #f2f2f2); }
+fieldset textarea { height: auto; min-height: 100px; }
+fieldset select { height: 30px; width: 102%; }
+
+fieldset input[type = 'submit'],
+fieldset input[type = 'button'],
+fieldset input[type = 'reset'] { margin-top: 20px; border: 1px solid #d2d2d2; .box-shadow(1px 1px 0 #ededed, inset 0 1px #fff); .gradient(#f2f2f2, #eaeaea, #f9f9f9); height: 27px; padding: 0 10px; line-height: 27px; }
+fieldset input[type = 'submit']:hover,
+fieldset input[type = 'button']:hover,
+fieldset input[type = 'reset']:hover { .opacity(0.7); }
+
+
+@import "helpers.less";
+@import "print.less";
