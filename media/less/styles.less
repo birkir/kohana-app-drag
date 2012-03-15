@@ -51,18 +51,31 @@ aside #search input[type = 'search'] { float: left; display: block; background: 
 aside #search input[type = 'submit'] { float: left; border: 0; border-left: 1px solid #e6e6e6; .gradient(#f2f2f2, #f9f9f9, #fcfcfc); .box-shadow(-1px 0 2px 0px #f8f8f8); height: 29px; width: 32px; text-indent: -9999px; }
 
 /** sidebar :: navigation **/
+aside h5.nav { font-size: 12px; text-transform: uppercase; margin: 0 0 4px 25px; }
 aside nav { display: block; background: #fff; border: 1px solid #e6e6e6; margin: 0 20px 20px; .boxshdw; }
 aside nav ul { list-style: none; margin: 0; padding: 0; }
 aside nav ul li { display: block; border-top: 1px solid #e6e6e6; background: url(../img/icon-submenu.gif) 9px 13px no-repeat; }
 aside nav ul li:first-child { border-top: 0; }
 aside nav ul li a { display: block; padding: 8px 10px 8px 23px; color: #737272; text-decoration: none; font-size: 13px; }
+aside nav ul li.current { background: #fbfbfb url(../img/icon-submenu-on.gif) no-repeat 9px 13px; }
+aside nav ul li.current > a { color: #000; }
 aside nav ul li a:hover { color: #000; }
 aside nav ul li ul { padding: 0 0 6px; }
 aside nav ul li ul li { border: 0; line-height: 11px; background: none; }
+aside nav ul li ul li.current { background: none; }
 aside nav ul li ul li a { padding: 4px 10px 6px 23px; font-size: 11px; }
 
 /** content **/
-#content { width: 100%; float: left; background: #fff; padding-top: 20px; }
+#content { width: 100%; min-height: 640px; float: left; background: #fff; padding-top: 20px; }
+
+#content h1 { margin: 15px 0 0; padding: 0; font: 22px/1.1em Arial; font-weight: normal; color: #e10000; }
+#content h2 { margin: 15px 0 0; padding: 0; font: 16px/1.1em Arial; font-weight: normal; color: #e10000; }
+#content h3 { margin: 10px 0 0; padding: 0; font: 16px/1.1em Arial; font-weight: normal; color: #e10000; }
+#content h4 { margin: 15px 0 0; padding: 0; font: 15px/1.1em Arial; font-weight: normal; color: #e10000; }
+#content h5 { margin: 15px 0 0; padding: 0; font: 14px/1.1em Arial; font-weight: normal; color: #e10000; }
+#content h6 { margin: 15px 0 0; padding: 0; font: 12px/1.1em Arial; font-weight: normal; color: #e10000; }
+#content section > h1:first-child,
+#content section > h2:first-child { margin: 0 0 15px 0; }
 
 /** content :: section **/
 #content section { margin: 0 20px; }
@@ -73,10 +86,10 @@ aside nav ul li ul li a { padding: 4px 10px 6px 23px; font-size: 11px; }
 #content section .grid3 { width: 73.7%; float: left; margin-left: 21px; }
 #content section .grid3.first { margin-left: 0; }
 #content section .grid4 { width: 100%; }
-#content section .box h3 { font-size: 13px; .boxcaption; }
+#content section .box h3 { font-size: 13px; .boxcaption; color: #333; }
 
 /** table :: basic **/
-table.basic { .box; font-size: 13px; display: table; width: 100%; }
+table.basic { font-size: 13px; display: table; width: 100%; }
 table.basic caption { text-align: left; margin: 0; padding: 0 0 5px 0; font-size: 13px; color: #E10000; text-transform: uppercase; font-weight: bold; }
 table.basic thead tr th { .boxcaption; font-size: 13px; text-align: left; font-weight: bold; text-transform: none; border-left: 1px solid #e6e6e6; .box-shadow(inset 0 -1px 3px 0 #fff, inset 0 1px #fff); border-bottom: 0; }
 table.basic thead tr th:first-child { border-left: 0; }
@@ -84,6 +97,15 @@ table.basic tbody tr td { border-left: 1px solid #e6e6e6; padding: 5px 10px; fon
 table.basic tbody tr td:first-child { border-left: 0; }
 table.basic tbody tr:nth-child(2n) td { background: #fafafa; }
 table.basic tbody tr:first-child td { border-top: 1px solid #e6e6e6; }
+table.basic tbody tr th { padding: 5px 10px; background: #e6e6e6; .box-shadow(inset 2px 1px 2px #e6e6e6); }
+
+table.properties { font-size: 13px; width: 100%; display: table; }
+table.properties tbody tr th,
+table.properties tbody tr td { border-top: 1px solid #e6e6e6; }
+table.properties tbody tr:first-child th,
+table.properties tbody tr:first-child td { border-top: 0; }
+table.properties tbody tr th { border-right: 1px solid #e6e6e6; text-align: left; padding: 5px 10px; color: #555; }
+table.properties tbody tr td { padding: 5px 10px; }
 
 /** fieldset **/
 fieldset { margin: 20px; font-size: 13px; }

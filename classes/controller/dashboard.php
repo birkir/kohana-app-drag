@@ -1,6 +1,6 @@
 <?php
 
-class Controller_Dashboard extends Controller_Base {
+class Controller_Dashboard extends Controller_Template {
 
 	public function action_index()
 	{

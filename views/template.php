@@ -9,9 +9,9 @@
 	<title>drag-dev :: development</title>
 	<meta name="description" content="drag database application">
 	<meta name="viewport" content="width=device-width">
-	<link rel="stylesheet" type="text/css" href="/media/less/styles.less">
+	<link rel="stylesheet" type="text/css" href="/media/less/styles.less<?=Utilities::nocache();?>">
 	<link href='http://fonts.googleapis.com/css?family=Varela' rel='stylesheet' type='text/css'>
-	<script src="/media/js/libs/modernizr-2.5.3.min.js"></script>
+	<script src="/media/js/libs/modernizr-2.5.3.min.js<?=Utilities::nocache();?>"></script>
 </head>
 <body>
 	<div class="wrap frame">
@@ -24,9 +24,9 @@
 			</div>
 			<nav>
 				<ul>
-<?php foreach ($menu as $item): ?>
-					<li<?php if (Request::current()->controller() == $item['controller']): ?> class="current"<?php endif; ?>>
-						<a href="/<?php echo $item['controller']; ?>"><?php echo __($item['title']); ?></a>
+<?php foreach ($config->menu as $item): ?>
+					<li<?=($toplevel == Inflector::singular($item) ? ' class="current"' : NULL);?>>
+						<a href="/<?php echo $item; ?>"><?=__(ucfirst($item));?></a>
 					</li>
 <?php endforeach; ?>
 				</ul>
@@ -35,31 +35,30 @@
 		</header>
 		<div id="container">
 			<aside>
-				<div id="search">
-					<form action="" method="post">
-						<input type="search" value="" placeholder="<?php echo __('Search'); ?>">
-						<input type="submit" name="" value="<?php echo __('Search'); ?>" />
-						<div class="clearfix"></div>
-					</form>
-				</div>
-				<nav>
-<?php if (isset($nav)): ?>
-<?php echo $nav; ?>
-<?php endif; ?>
-
-				</nav>
+<?=(isset($navigation) ? $navigation : NULL);?>
 			</aside>
 			<div role="main" id="content">
 <?php if (isset($content)): ?>
-<?php echo $content; ?>
+<?php if ( ! is_array($content)): ?>
+				<section>
+<?=$content;?>
+				</section>
+<?php else: ?>
+<?php foreach ($content as $section): ?>
+				<section>
+<?=$section;?>
+				</section>
+<?php endforeach; ?>
+<?php endif; ?>
 <?php endif; ?>
 
 			</div>
+			<div class="clearfix"></div>
 		</div>
 	</div>
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-	<script>window.jQuery || document.write('<script src="/media/js/libs/jquery-1.7.1.min.js"><\/script>')</script>
-	<script src="/media/js/plugins.js"></script>
-	<script src="/media/js/script.js"></script>
+	<script>window.jQuery || document.write('<script src="/media/js/libs/jquery-1.7.1.min.js<?=Utilities::nocache();?>"><\/script>')</script>
+	<script src="/media/js/plugins.js<?=Utilities::nocache();?>"></script>
+	<script src="/media/js/script.js<?=Utilities::nocache();?>"></script>
 </body>
 </html>

@@ -47,14 +47,7 @@ class Controller_Media extends Controller {
 				break;
 
 				case 'img':
-
-				$url = 'http://drag-dev.forritun.org/media/'.$this->request->param('folder').'/'.$this->request->param('file').'?nocache&smushit';
-
-				if ( ! isset($_GET['smushit']))
-				{
-					$data = self::parse_img($url);
-				}
-
+				$data = self::parse_img($filename);
 				break;
 
 			}
@@ -143,9 +136,9 @@ class Controller_Media extends Controller {
 		return $data;
 	}
 
-	public static function parse_js()
+	public static function parse_js($data = NULL)
 	{
-		// minify javascript files
+		return $data;
 	}
 
 	public static function parse_css($data = NULL)
@@ -156,11 +149,15 @@ class Controller_Media extends Controller {
 		return $data;
 	}
 
-	public static function parse_img($url)
+	public static function parse_img($filename = NULL)
 	{
 		$ch = curl_init();
-		curl_setopt($ch, CURLOPT_URL, 'http://www.smushit.com/ysmush.it/ws.php?img='.$url);
+		curl_setopt($ch, CURLOPT_URL, 'http://www.smushit.com/ysmush.it/ws.php?');
+		curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/535.11 (KHTML, like Gecko) Chrome/17.0.963.65 Safari/535.11');
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+		curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 5);
+		curl_setopt($ch, CURLOPT_POST, TRUE);
+		curl_setopt($ch, CURLOPT_POSTFIELDS, array('files' => '@'.$filename));
 
 		$dump = curl_exec($ch);
 
