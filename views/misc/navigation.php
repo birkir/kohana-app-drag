@@ -5,7 +5,7 @@
 <ul>
 <?php foreach ($items as $item): ?>
 	<li<?=((isset($item['current']) AND $item['current'] == TRUE) ? ' class="current"' : NULL);?>>
-		<a href="<?=$item['url'];?>"><?=$item['title'];?></a>
+		<a href="<?=$item['url'];?>"><?=__($item['title']);?></a>
 		<?php if (isset($item['childs']) AND count($item['childs']) > 0): ?>
 		<?php menu($item['childs']); ?>
 		<?php endif; ?>

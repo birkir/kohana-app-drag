@@ -1,7 +1,18 @@
 <?php defined('SYSPATH') or die('No direct script access.');
 
+/**
+ * Utilities library
+ * 
+ * @package     Drag
+ * @category    Controller
+ * @author      Birkir Gudjonsson (birkir.gudjonsson@gmail.com)
+ * @copyright   (c) 2012 SOLID
+ */
 class Utilities {
 
+	/**
+	 * Checks for nocache query
+	 */
 	public static function nocache()
 	{
 		return (isset($_GET['nocache']) ? '?nocache' : NULL);

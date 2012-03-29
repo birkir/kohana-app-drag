@@ -68,6 +68,12 @@ Route::set('competition', 'competition(/<competition>(/<action>))')
 		'action'     => 'details'
 	));
 
+Route::set('class', 'competition/<competition>/class/<class>')
+	->defaults(array(
+		'controller' => 'competition_class',
+		'action'     => 'details'
+	));
+
 Route::set('matches', 'competition/<competition>/round/<round>/matches')
 	->defaults(array(
 		'controller' => 'competition_round_match',
@@ -78,6 +84,12 @@ Route::set('competitors', 'competition/<competition>/round/<round>/competitors')
 	->defaults(array(
 		'controller' => 'competition_round_competitor',
 		'action'     => 'list'
+	));
+
+Route::set('competitor', 'competition/<competition>/round/<round>/competitor/<competitor>')
+	->defaults(array(
+		'controller' => 'competition_round_competitor',
+		'action'     => 'details'
 	));
 
 Route::set('times', 'competition/<competition>/round/<round>/times')

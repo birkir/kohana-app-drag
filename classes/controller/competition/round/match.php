@@ -1,5 +1,13 @@
 <?php defined('SYSPATH')or die('No direct script access.');
 
+/**
+ * Match class and functions.
+ * 
+ * @package     Drag
+ * @category    Controller
+ * @author      Birkir Gudjonsson (birkir.gudjonsson@gmail.com)
+ * @copyright   (c) 2012 SOLID
+ */
 class Controller_Competition_Round_Match extends Controller_Template {
 
 	public $competition,
