@@ -36,6 +36,12 @@ class Controller_Base extends Controller {
 		$this->template = new View($this->template);
 		$this->template->menu = $this->menu;
 
+        // check for debug
+        if (isset($_GET['debug'])
+        {
+            $this->template->profiler = View::factory('profiler/stats');
+        }
+
 		return parent::before();
 	}
 
