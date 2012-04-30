@@ -87,7 +87,7 @@ class Controller_Competition extends Controller_Template {
 		// get rounds
 		$rounds = View::factory('competition/round/list')
 		->set('items', $this->competition->rounds
-        ->order_by(DB::expr('YEAR(`datetime`)', 'DESC')
+        ->order_by(DB::expr('YEAR(`datetime`)', 'DESC'))
         ->order_by('datetime', 'ASC')
         ->find_all());
 
